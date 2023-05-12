@@ -1,17 +1,14 @@
 #imports all child classes of the base class State into Employee
-import Agent
-import GoHomeAndSleepUntilRestedState
-import GoToTheBankAndDepositMoneyState
-import GoToWorkPlaceAndMakeMoneyState
-import SatisfyHungerState
 
+from Agent import Agent
+from State import GoHomeAndSleepUntilRestedState, GoToTheBankAndDepositMoneyState, GoToWorkplaceAndMakeMoneyState, SatisfyHungerState
 
 agent = Agent()
 
 transitions = {
     '1': GoHomeAndSleepUntilRestedState(agent),
     '2': GoToTheBankAndDepositMoneyState(agent),
-    '3': GoToWorkPlaceAndMakeMoneyState(agent),
+    '3': GoToWorkplaceAndMakeMoneyState(agent),
     '4': SatisfyHungerState(agent),
     'q': None
 }
