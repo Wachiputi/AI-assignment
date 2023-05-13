@@ -1,20 +1,41 @@
-#imports the GoHomeAndSleepUntilRestedState class
-#import GoHomeAndSleepUntilRestedState
+#imports all child classes of the base class State into Employee
 
-#an agent class that implements the state that an agent is in, sets it to another state based on user input and display the updtaed state
-from State import GoHomeAndSleepUntilRestedState
+from FiniteMachineState import FiniteMachineState
+from Base import GoHomeAndSleepUntilRestedState, GoToTheBankAndDepositMoneyState, GoToWorkPlaceAndMakeMoneyState, SatisfyHungerState
+
+agent = FiniteMachineState()
+
+transitions = {
+    '1': GoHomeAndSleepUntilRestedState(agent),
+    '2': GoToTheBankAndDepositMoneyState(agent),
+    '3': GoToWorkPlaceAndMakeMoneyState(agent),
+    '4': SatisfyHungerState(agent),
+    'q': None
+}
+
+while True:
 
 
-class Agent:
-    def __init__(self):
-        self.state = GoHomeAndSleepUntilRestedState(self)
+    print("\nCurrent State:")
+
+    agent.output_status()
+
+    print("Available Transitions:")
+    transitions = agent.get_available_transitions()
+    for key, value in transitions.items():
+        if value:
+            print(key, ": ", type(value).__name__)
+
+    user_input = input("Enter a transition key: ")
     
-    def set_state(self, state):
-        self.state = state
-    
-    def output_status(self):
-        self.state.output_status()
+    if user_input == 'q':
+        break
+    elif user_input in transitions:
+        new_state = transitions[user_input]
+        if new_state:
+            agent.set_state(new_state)
 
-    def get_available_transitions(self):
-        return self.state.get_transitions()
-#end of the agent class
+
+
+
+#end of this class

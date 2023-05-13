@@ -21,7 +21,7 @@ class GoToTheBankAndDepositMoneyState(State):
             '1': GoHomeAndSleepUntilRestedState(self.agent),
             '2': GoToWorkPlaceAndMakeMoneyState(self.agent)
         }
-class GoToWorkplaceAndMakeMoneyState(State):
+class GoToWorkPlaceAndMakeMoneyState(State):
     def output_status(self):
         print("I`m at Workplace, making money")
     def get_transitions(self):
@@ -35,5 +35,5 @@ class SatisfyHungerState(State):
         print("I`m at the Restaurant, satisfying hunger")
     def get_transitions(self):
         return {
-            '1': GoToWorkplaceAndMakeMoneyState(self.agent)
+            '1': GoToWorkPlaceAndMakeMoneyState(self.agent)
         }
