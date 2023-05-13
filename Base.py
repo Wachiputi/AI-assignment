@@ -10,7 +10,7 @@ class GoHomeAndSleepUntilRestedState(State):
         print("I`m at Home, sleeping")
     def get_transitions(self):
         return {
-            '1':GoToWorkplaceAndMakeMoneyState(self.agent)
+            '1':GoToWorkPlaceAndMakeMoneyState(self.agent)
         }
 class GoToTheBankAndDepositMoneyState(State):
     def output_status(self):
